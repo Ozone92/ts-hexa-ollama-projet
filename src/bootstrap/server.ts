@@ -1,9 +1,9 @@
 import Fastify from 'fastify'
 import sensible from '@fastify/sensible'
-import dbPlugin from '../shared/infrastructure/persistance/database.js'
-import { healthRoute } from './routes/health.js'
+import database from '../shared/infrastructure/persistance/database.js'
+import { healthRoute } from '../modules/health/http/health.routes.js'
 import { chatRoute } from '../modules/chat/http/chat.routes.js'
-import { conversationsRoute } from './routes/conversations.js'
+import { conversationsRoute } from '../modules/conversation/http/conversation.routes.js'
 
 export async function buildApp(opts = {}) {
   const app = Fastify({
@@ -16,7 +16,8 @@ export async function buildApp(opts = {}) {
 
   // ── Plugins globaux ───────────────────────────────────────────────────────
   await app.register(sensible)  // reply.notFound(), reply.badRequest(), etc.
-  await app.register(dbPlugin)  // app.db, app.stmts
+
+  app.addHook('onClose', () => database.db.close());
 
   // ── Routes ────────────────────────────────────────────────────────────────
   await app.register(healthRoute)
