@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "NodeNext",
+    "target": "es2024",
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ESNext"
+    ],
+    "types": [
+      "node"
+    ],
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@bootstrap/*": [
+        "./src/bootstrap/*"
+      ],
+      "@shared/*": [
+        "./src/shared/*"
+      ],
+      "@modules/*": [
+        "./src/modules/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+}
